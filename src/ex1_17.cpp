@@ -5,9 +5,11 @@
 #include <iostream>
 #include <numbers>
 
-#include "../include/euler.h"
+#include "euler.h"
+#include "ex1_17.h"
+#include "utils.h"
 
-int main(int argc, char *argv[]) {
+void ex1_17() {
   const double g = 9.8;          // Earth's gravitational constant (m/s^2)
   const double l = 1.0;          // length of pendulum (m)
   const double theta_target = 0; // target angle (radians)
@@ -19,17 +21,22 @@ int main(int argc, char *argv[]) {
   std::array<std::function<double(std::array<double, 1>, std::array<double, 1>,
                                   double)>,
              1>
-      d2thetas = {[g, l](std::array<double, 1> _theta1s,
-                         std::array<double, 1> thetas, double _t) {
+      d2thetas = {[g, l]([[maybe_unused]] std::array<double, 1> _theta1s,
+                         std::array<double, 1> thetas,
+                         [[maybe_unused]] double _t) {
         return -g * std::sin(thetas[0]) / l;
       }}; // d^2theta / dt^2
   std::array<double, 1> thetas = {std::numbers::pi /
                                   2.0}; // initial angle theta (radians)
   std::array<double, 1> theta1s = {
       0.0}; // initial velocity dtheta / dt (radians/s)
-  auto cond = [theta_target](std::array<double, 1> _theta1s,
+  auto cond = [theta_target]([[maybe_unused]] std::array<double, 1> _theta1s,
                              std::array<double, 1> thetas,
-                             double _t) { return thetas[0] > theta_target; };
+                             [[maybe_unused]] double _t) {
+    return thetas[0] > theta_target;
+  };
+
+  print_heading("Exercise 1.17");
 
   do {
     t1 = t2;
@@ -39,7 +46,5 @@ int main(int argc, char *argv[]) {
   } while (abs(t2 - t1) / abs(t2) > err);
 
   std::cout << "Time taken for pendulum to reach vertical at " << theta_target
-            << " radians: " << t2 << "s, delta t = " << eps << "s\n";
-
-  return EXIT_SUCCESS;
+            << " radians: " << t2 << "s, epsilon = " << eps << "s\n";
 }

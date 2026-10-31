@@ -9,3 +9,10 @@
 
 # macOS files
 *.dSYM
+
+# CMake files
+CMakeFiles/
+.cache/
+*.cmake
+CMakeCache.txt
+compile_commands.json
