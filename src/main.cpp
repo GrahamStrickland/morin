@@ -1,6 +1,7 @@
 #include <cstdlib>
 
 #include "ex1_17.h"
+#include "ex1_18.h"
 #include "p1_7.h"
 #include "utils.h"
 
@@ -9,6 +10,7 @@ int main() {
                 "\"Introduction to Classical Mechanics\" - David Morin");
   p1_7();
   ex1_17();
+  ex1_18();
 
   return EXIT_SUCCESS;
 }

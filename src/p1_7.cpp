@@ -29,11 +29,11 @@ void p1_7() {
             return (-2.0 * x1s[0] * x1s[1] - g * std::sin(xs[1])) / xs[0];
           }, // dtheta^2 / dt^2
       };
+  std::array<double, 2> x1s = {
+      0.0, 0.0}; // initial velocities -- r (m/s) and dtheta / dt (radians/s)
   std::array<double, 2> xs = {
       1.0, std::numbers::pi /
                18.0}; // initial radius r (m) and angle theta (radians)
-  std::array<double, 2> x1s = {
-      0.0, 0.0}; // initial velocities -- r (m/s) and dtheta / dt (radians/s)
   auto cond = [r_target]([[maybe_unused]] std::array<double, 2> _x1s,
                          std::array<double, 2> xs, [[maybe_unused]] double _t) {
     return xs[0] < r_target;

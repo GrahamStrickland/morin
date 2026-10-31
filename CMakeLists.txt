@@ -15,6 +15,7 @@ set(SOURCES
     src/utils.cpp
     src/p1_7.cpp
     src/ex1_17.cpp
+    src/ex1_18.cpp
     src/main.cpp
 )
 

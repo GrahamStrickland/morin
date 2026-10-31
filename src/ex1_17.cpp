@@ -26,10 +26,10 @@ void ex1_17() {
                          [[maybe_unused]] double _t) {
         return -g * std::sin(thetas[0]) / l;
       }}; // d^2theta / dt^2
-  std::array<double, 1> thetas = {std::numbers::pi /
-                                  2.0}; // initial angle theta (radians)
   std::array<double, 1> theta1s = {
       0.0}; // initial velocity dtheta / dt (radians/s)
+  std::array<double, 1> thetas = {std::numbers::pi /
+                                  2.0}; // initial angle theta (radians)
   auto cond = [theta_target]([[maybe_unused]] std::array<double, 1> _theta1s,
                              std::array<double, 1> thetas,
                              [[maybe_unused]] double _t) {
